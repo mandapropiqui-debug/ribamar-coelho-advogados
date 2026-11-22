@@ -30,7 +30,7 @@ const setG=reels($('#gnum'),2);setG(0);
 let done=false,entered=false,sdrag=false,moved=false,sx=0,sy=0;
 /* tudo anima: auto-marca elementos da pagina */
 const hw=$('#links .hero');let ht=500;
-const hl=[['.hside',900],['.stage',600],['.stage .lg2',700],['h1',1500],['.sub',2000],['.chips .chip',2150],['.areas4 a',2350],['.wave',2650],['.stack .btn',2750]];
+const hl=[['.hside',900],['.stage',600],['.stage .lg2',700],['h1',1500],['.sub',2150],['.chips .chip',2150],['.areas4 a',2350],['.wave',2650],['.stack .btn',2750]];
 hl.forEach(([sel,t0])=>$$(sel,hw).forEach((e,i)=>{if(!e.hasAttribute('data-a')&&sel!=='.stage .lg2')e.setAttribute('data-a',sel==='.areas4 a'||sel==='.chips .chip'?'pop':'');e.dataset.t=t0+i*(sel==='.stack .btn'?100:75)}));
 $$('#links .lg2 path,#links .lg2 polygon').forEach((p,i)=>p.style.setProperty('--k',i));
 const heroEls=$$('#links [data-t]');
@@ -77,7 +77,7 @@ $$('main section').forEach(s=>sio.observe(s));
 const bar=$('#mbar');
 const secs=$$('main section');let thLast='';
 function menuTone(){const y=(menu.getBoundingClientRect().top||12)+30;let t='dark';for(const s of secs){const r=s.getBoundingClientRect();if(r.top<=y&&r.bottom>y){t=s.dataset.th;break}}if(t!==thLast){thLast=t;menu.classList.toggle('onlight',t==='light')}}
-function onScroll(){menuTone();const m=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(m>0?scrollY/m:0)+')';tlUpdate();parUpdate()}
+function onScroll(){menuTone();menu.classList.toggle('lift',scrollY>40);const m=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(m>0?scrollY/m:0)+')';tlUpdate();parUpdate()}
 
 /* ===== PRINCÍPIOS ===== */
 {const pt=$$('#ptabs button'),pp=$$('#ppan .pp'),pi=$('#pind');
