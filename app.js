@@ -70,7 +70,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 $$('[data-a],.words,.map').forEach(e=>{if(!heroEls.includes(e))io.observe(e)});
 
 /* ===== MENU ===== */
-const M={links:'links',triagem:'triagem',escritorio:'socios',principios:'socios',socios:'socios',areas:'areas',causas:'causas',atuacao:'atuacao',anos:'atuacao',voz:'contato',faq:'contato',contato:'contato'};
+const M={links:'links',triagem:'triagem',escritorio:'equipe',principios:'equipe',equipe:'equipe',areas:'areas',causas:'causas',atuacao:'atuacao',anos:'atuacao',voz:'contato',faq:'contato',contato:'contato'};
 const mlinks=$$('#menu a');
 const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const k=M[e.target.id];mlinks.forEach(a=>a.classList.toggle('on',a.dataset.s===k));}}),{rootMargin:'-40% 0px -55% 0px'});
 $$('main section').forEach(s=>sio.observe(s));
@@ -137,10 +137,7 @@ function car(box,dots,sel){const bs=$$(sel,box);let cur=-1,last=0,held=false;
  box.scrollLeft=0;upd();
  setInterval(()=>{const r=box.getBoundingClientRect();if(DESK||held||r.top>innerHeight||r.bottom<0||performance.now()-last<2500||reduce)return;go((cur+1)%bs.length)},3600);
  return bs}
-(function(){const bs=car($('#socios .bdgs:not(.tcs)'),$('#bdots'),'.bdg');
- new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){bs.forEach(b=>b.classList.add('swing'));o.disconnect()}}),{threshold:.25}).observe($('.bdgs'));
- bs.forEach(b=>{const c=$('.card',b);b.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'){const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='rotateY('+x*10+'deg) rotateX('+-y*8+'deg)'}});b.addEventListener('pointerleave',()=>{c.style.transform=''})});
- car($('#tcs'),$('#tdots'),'.tc')})();
+(function(){ car($('#tcs'),$('#tdots'),'.tc')})();
 
 /* ===== ÁREAS ===== */
 const AR={
